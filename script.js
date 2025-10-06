@@ -27,7 +27,18 @@ function addR() {
 
 // Add a column
 function addC() {
-    alert("Clicked Add Col"); // Replace this line with your code.
+    let rows = document.getElementsByTagName("tr");
+    if(rows.length === 0){
+        addR();
+        return;
+    }
+    for (let i = 0; i < numRows; i++) {
+        let cell = rows[i].insertCell(numCols);
+        cell.onclick = function(){
+            this.style.backgroundColor = colorSelected;
+        };
+    }
+    numCols++;
 }
 
 // Remove a row
